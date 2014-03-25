@@ -1,5 +1,11 @@
 package chapter.one;
 
+/**
+ * Implement a function void reverse(char* str) in C or C++ which reverses a null-terminated string
+ * @author jerry
+ *
+ */
+
 public class Q1_2 {
 	
 	
