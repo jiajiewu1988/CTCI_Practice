@@ -11,7 +11,7 @@ public class Q1_5 {
 	public static void main(String args[]) {
 		String s = "aabcccccaaa";
 		String s2 = "abcedfsjflskc,dksla";
-		System.out.println(compress_version1(s2));
+		System.out.println(compress_version1(s));
 	}
 	
 	/**
@@ -48,5 +48,59 @@ public class Q1_5 {
 		
 		if (s.length() > result.length()) return result;
 		else return s;
+	}
+	
+	/**
+	 * Use StringBuffer to do concatenation
+	 * @param s
+	 * @return
+	 */
+	public static String compress_stringbuffer(String s) {
+		//Check if compressed string is longer than original string
+		if (countCompression(s) >= s.length()) return s;
+		
+		StringBuffer mystr = new StringBuffer();
+		char last = s.charAt(0);
+		int count = 1;
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) == last) {
+				count++;
+			} else {
+				mystr.append(last);
+				mystr.append(count);
+				count = 1;
+				last = s.charAt(i);
+			}
+		}
+		
+		mystr.append(last);
+		mystr.append(count);
+		return mystr.toString();
+	}
+	
+	
+	//Keys from CTCI solutions P-177
+	
+	/**
+	 * Count the length of the compressed string.
+	 * @param s
+	 * @return
+	 */
+	public static int countCompression(String s) {
+		char last = s.charAt(0);
+		int size = 0;
+		int count = 1;
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) == last) {
+				count++;
+			} else {
+				last = s.charAt(i);
+				size += 1 + String.valueOf(count).length();
+				count = 1;
+			}
+		}
+		
+		size += 1 + String.valueOf(count).length();
+		return size;
 	}
 }
