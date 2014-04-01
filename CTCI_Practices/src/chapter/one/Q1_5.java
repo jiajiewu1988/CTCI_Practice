@@ -11,7 +11,7 @@ public class Q1_5 {
 	public static void main(String args[]) {
 		String s = "aabcccccaaa";
 		String s2 = "abcedfsjflskc,dksla";
-		System.out.println(compress_version1(s));
+		System.out.println(compress_stringbuffer(s));
 	}
 	
 	/**
