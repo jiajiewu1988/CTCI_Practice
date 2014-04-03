@@ -1,8 +1,11 @@
 package chapter.two;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Write code to remove duplicates from an unsorted linked list.
@@ -53,6 +56,29 @@ public class Q2_1 {
 	}
 	
 	/**
+	 * 
+	 */
+	public static JNode<String> removeDuplicates_TwoIterator() {
+		JNode<String> head = createJNodeList();
+		JNode<String> node = head;
+		while (node.next != null) {
+			JNode<String> temp = node.next;
+			
+			while (temp.next != null) {
+				if (temp.getData().equals(node.getData())) {
+					temp.data = temp.next.data;
+					temp.next = temp.next.next;
+				} else {
+					temp = temp.next;
+				}
+			}
+			
+			node = node.next;
+		}
+		return head;
+	}
+	
+	/**
 	 * To Create a "FOLLOW UP" Linked List
 	 */
 	public static void createList() {
@@ -68,10 +94,38 @@ public class Q2_1 {
 		list.add("P");
 	}
 	
+	public static JNode<String> createJNodeList() {
+		JNode<String> head = new JNode<String>(null, "F");
+		JNode<String> temp = head;
+		temp.next = new JNode<String>(null, "O");
+		temp = temp.next;
+		temp.next = new JNode<String>(null, "L");
+		temp = temp.next;
+		temp.next = new JNode<String>(null, "L");
+		temp = temp.next;
+		temp.next = new JNode<String>(null, "O");
+		temp = temp.next;
+		temp.next = new JNode<String>(null, "W");
+		temp = temp.next;
+		temp.next = new JNode<String>(null, " ");
+		temp = temp.next;
+		temp.next = new JNode<String>(null, "U");
+		temp = temp.next;
+		temp.next = new JNode<String>(null, "P");
+		temp = temp.next;
+		
+		return head;
+	}
+	
 	//Tester
 	public static void main(String[] args) {
-		removeDuplicates_Hashtable();
+		JNode<String> head = removeDuplicates_TwoIterator();
 		
+		while (head.next != null) {
+			System.out.print(head.getData());
+			head = head.next;
+		}
+		System.out.print(head.getData());
 		System.out.println();
 	}
 	
