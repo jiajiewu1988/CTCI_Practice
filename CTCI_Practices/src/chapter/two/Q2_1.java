@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import chapter.two.JList_Creator;
 
 /**
  * Write code to remove duplicates from an unsorted linked list.
@@ -56,10 +57,10 @@ public class Q2_1 {
 	}
 	
 	/**
-	 * 
+	 * Use Two Iterators to solve this problem
 	 */
 	public static JNode<String> removeDuplicates_TwoIterator() {
-		JNode<String> head = createJNodeList();
+		JNode<String> head = JList_Creator.createList();
 		JNode<String> node = head;
 		while (node.next != null) {
 			JNode<String> temp = node.next;
@@ -92,29 +93,6 @@ public class Q2_1 {
 		list.add(" ");
 		list.add("U");
 		list.add("P");
-	}
-	
-	public static JNode<String> createJNodeList() {
-		JNode<String> head = new JNode<String>(null, "F");
-		JNode<String> temp = head;
-		temp.next = new JNode<String>(null, "O");
-		temp = temp.next;
-		temp.next = new JNode<String>(null, "L");
-		temp = temp.next;
-		temp.next = new JNode<String>(null, "L");
-		temp = temp.next;
-		temp.next = new JNode<String>(null, "O");
-		temp = temp.next;
-		temp.next = new JNode<String>(null, "W");
-		temp = temp.next;
-		temp.next = new JNode<String>(null, " ");
-		temp = temp.next;
-		temp.next = new JNode<String>(null, "U");
-		temp = temp.next;
-		temp.next = new JNode<String>(null, "P");
-		temp = temp.next;
-		
-		return head;
 	}
 	
 	//Tester
