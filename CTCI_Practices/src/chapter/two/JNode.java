@@ -16,6 +16,10 @@ public class JNode<T> {
 		this.data = data;
 	}
 	
+	public JNode(T data) {
+		this.data = data;
+	}
+	
 	public T getData() {
 		return data;
 	}
