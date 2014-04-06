@@ -16,12 +16,17 @@ public class Q2_4 {
 	 *   - one contains nodes <= x
 	 *   - one contains nodes > x
 	 * 
-	 * At the end, append the head of the great list to the tail of the small list
+	 * At the end, attach the head of the great list to the tail of the small list
 	 * @param head
 	 * @param x
 	 * @return
 	 */
 	public static JNode<String> partition(JNode<String> head, String x) {
+		/*There's another way to have only 2 nodes to record 2 linked lists.
+		 * In the while loop, append new nodes before the current node,
+		 * then at the end, we can have those 2 nodes be the head of 
+		 * small and great lists
+		 */
 		JNode<String> smaller = null, greater = null, smallHead = null, greatHead = null;
 		
 		while (head != null) {
