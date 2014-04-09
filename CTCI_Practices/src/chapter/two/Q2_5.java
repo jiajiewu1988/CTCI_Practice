@@ -65,25 +65,64 @@ public class Q2_5 {
 		return sumHead;
 	}
 	
+	/**
+	 * Reverse n1 and n2 list first, and use the addReverseList to sum up 2 list
+	 * Then reverse sum list to forward order
+	 * @param n1
+	 * @param n2
+	 * @return
+	 */
+	public static JNode<Integer> addForwardList(JNode<Integer> n1, JNode<Integer> n2) {
+		JNode<Integer> reversedSum = addReverseList(reverseList(n1), reverseList(n2));
+		
+		return reverseList(reversedSum);
+	}
+	
+	public static JNode<Integer> reverseList(JNode<Integer> head) {
+		JNode<Integer> rHead = null;
+		while (head != null) {
+			JNode<Integer> temp = rHead;
+			rHead = new JNode<Integer>(head.data);
+			head = head.next;
+			rHead.next = temp;
+		}
+		
+		return rHead;
+	}
+	
 	//Tester
 	public static void main(String[] args) {
+		
+		//List 7 -> 1 -> 6
 		JNode<Integer> n1 = new JNode<Integer>(7);
 		JNode<Integer> temp = n1;
 		temp.next = new JNode<Integer>(1);
 		temp = temp.next;
 		temp.next = new JNode<Integer>(6);
 		
+		//List 5 -> 9 -> 2
 		JNode<Integer> n2 = new JNode<Integer>(5);
 		temp = n2;
 		temp.next = new JNode<Integer>(9);
 		temp = temp.next;
 		temp.next = new JNode<Integer>(2);
 		
+		//List 6 -> 1 -> 7
+		JNode<Integer> n3 = new JNode<Integer>(new Integer(6));
+		temp = n3;
+		temp.next = new JNode<Integer>(new Integer(1));
+		temp = temp.next;
+		temp.next = new JNode<Integer>(new Integer(7));
+		
+		//List 2 -> 9 -> 5
+		JNode<Integer> n4 = new JNode<Integer>(new Integer(2));
+		temp = n4;
+		temp.next = new JNode<Integer>(9);
+		temp = temp.next;
+		temp.next = new JNode<Integer>(5);
+		
+		JNode<Integer> sumForward = addForwardList(n3, n4);
+		
 		JNode<Integer> sum = addReverseList(n1, n2);
-		while (sum != null) {
-			System.out.print(sum.data.intValue() + "->");
-			sum = sum.next;
-		}
-		System.out.print("null\n");
 	}
 }
