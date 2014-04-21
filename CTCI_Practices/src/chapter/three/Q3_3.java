@@ -9,7 +9,7 @@ package chapter.three;
  * SetOfStacks.pop() should behave identically to a single stack(that is, pop()
  * should return the same values as it would if there were just a single stack).
  * 
- * FOLLOW UP
+ * FOLLOW UP (Not Implemented)
  * 
  * Implement a function popAt(int index) which performs a pop operation on
  * a specific sub-stack)
@@ -28,11 +28,25 @@ public class Q3_3 {
 		s.push(new Integer(2));
 		s.push(new Integer(2));
 		s.push(new Integer(2));
+		s.pop();
+		s.pop();
+		s.pop();
 		System.out.println();
 	}
 }
 
-
+/**
+ * Sets of stacks is a stack of stacks. The data of each node is a stack with maximum
+ * length - 5.
+ *  
+ * push() calls Stack3.push() to push an element into a stack with length <= 5. Otherwise,
+ * create a new stack, and push elements into the newly created stack.
+ * 
+ * pop() calls Stack3.pop() to pop data.
+ * @author jerryl
+ *
+ * @param <T>
+ */
 class SetOfStacks<T> {
 	private Node3<Stack3<T>> currentStack;
 	private int currentStackLength; //suppose each stack contains no more than 5 elements
